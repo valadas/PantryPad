@@ -6,7 +6,7 @@
     "arch": ["amd64", "armv7", "armhf"],
     "ingress": false,
     "ports": {
-      "8099/tcp": 8099,
+      "8099/tcp": 8099
     },
     "webui": "http://[HOST]:[PORT:8099]",
     "options": {},
