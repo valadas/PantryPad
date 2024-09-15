@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PantryPad", "src\PantryPad.csproj", "{558FDFD4-2234-4416-A564-B8DA253AAC6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PantryPad", "PantryPad\PantryPad.csproj", "{EA3A08E2-6F13-4FCD-A346-772F0DACC5AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{3FA2AF92-8873-4A42-9BB8-B5F82B7EE736}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +13,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{558FDFD4-2234-4416-A564-B8DA253AAC6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{558FDFD4-2234-4416-A564-B8DA253AAC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{558FDFD4-2234-4416-A564-B8DA253AAC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{558FDFD4-2234-4416-A564-B8DA253AAC6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA2AF92-8873-4A42-9BB8-B5F82B7EE736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA2AF92-8873-4A42-9BB8-B5F82B7EE736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3A08E2-6F13-4FCD-A346-772F0DACC5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3A08E2-6F13-4FCD-A346-772F0DACC5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3A08E2-6F13-4FCD-A346-772F0DACC5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3A08E2-6F13-4FCD-A346-772F0DACC5AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {CCBD1B7D-98B7-4DB6-9740-9525450A05A6}
+		SolutionGuid = {63CE3379-BDDC-4A82-9ED9-44467E91529F}
 	EndGlobalSection
 EndGlobal

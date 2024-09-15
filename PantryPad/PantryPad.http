@@ -1,0 +1,6 @@
+@PantryPad_HostAddress = http://localhost:5207
+
+GET {{PantryPad_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

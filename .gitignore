@@ -1,3 +1,6 @@
 .mono
 src/bin/
 src/obj/
+.nuke/temp/
+build/bin/
+build/obj/
