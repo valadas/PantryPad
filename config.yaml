@@ -1,0 +1,14 @@
+name: PantryPad
+version: "0.1.0"
+slug: pantrypad
+description: "PantryPad as an add-on for Home Assistant"
+arch:
+  - amd64
+  - armv7
+  - armhf
+  - aarch64
+  - i386
+ports:
+  8099/tcp: 8099
+options: {}
+schema: {}
