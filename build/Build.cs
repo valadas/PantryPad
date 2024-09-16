@@ -72,10 +72,11 @@ class Build : NukeBuild
     Target DockerBuild => _ => _
         .Executes(() =>
         {
+            var owner = GitRepository.GetGitHubOwner();
             var buildResult = DockerTasks.DockerBuild(s => s
             .SetPath(RootDirectory)
             .SetFile(RootDirectory / "Dockerfile")
-            .SetTag($"pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
             .SetProcessLogger((type, output) => {
                 if (output.Contains("ERROR:"))
                 {
