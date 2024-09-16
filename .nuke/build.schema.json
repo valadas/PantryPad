@@ -44,7 +44,8 @@
       "enum": [
         "CI",
         "Compile",
-        "DockerBuild"
+        "DockerBuild",
+        "Release"
       ]
     },
     "Verbosity": {

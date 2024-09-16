@@ -16,7 +16,17 @@
 
 name: build
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'release/*'
+  pull_request:
+    branches:
+      - main
+      - develop
+      - 'release/*'
 
 jobs:
   ubuntu-latest:
@@ -28,3 +38,5 @@ jobs:
           fetch-depth: 0
       - name: 'Run: CI'
         run: ./build.cmd CI
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
