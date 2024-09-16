@@ -11,6 +11,8 @@ RUN echo "I am running on ${BUILDPLATFORM}"
 RUN echo "building for ${TARGETPLATFORM}"
 RUN export TARGETPLATFORM="${TARGETPLATFORM}"
 
+# Build backend
+WORKDIR /App
 RUN dotnet publish -c Release -r linux-x64 --self-contained -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
@@ -21,4 +23,5 @@ LABEL \
   io.hass.version="VERSION" \
   io.hass.type="addon" \
   io.hass.arch="${TARGETPLATFORM}"
-  ENTRYPOINT ["dotnet", "PantryPad.dll"]
+
+ENTRYPOINT ["dotnet", "PantryPad.dll"]
