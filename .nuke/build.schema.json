@@ -42,6 +42,7 @@
     "ExecutableTarget": {
       "type": "string",
       "enum": [
+        "BuildFrontEnd",
         "CI",
         "Compile",
         "DockerBuild",

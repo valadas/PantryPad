@@ -57,6 +57,15 @@ class Build : NukeBuild
     AbsolutePath WwwRootDirectory => SourceDirectory / "wwwroot";
 
     Target Compile => _ => _
+        .DependsOn(BuildFrontEnd)
+        .Executes(() =>
+        {
+            DotNetTasks.DotNetBuild(s => s
+                .SetProjectFile(PantryPadProject)
+                .SetConfiguration(Configuration));
+        });
+    
+    Target BuildFrontEnd => _ => _
         .Executes(() =>
         {
             NpmTasks.NpmInstall(s => s
@@ -64,12 +73,10 @@ class Build : NukeBuild
             NpmTasks.NpmRun(s => s
                 .SetProcessWorkingDirectory(WwwRootDirectory)
                 .SetCommand("build"));
-            DotNetTasks.DotNetBuild(s => s
-                .SetProjectFile(PantryPadProject)
-                .SetConfiguration(Configuration));
         });
-    
+
     Target DockerBuild => _ => _
+        .DependsOn(BuildFrontEnd)
         .Executes(() =>
         {
             var owner = GitRepository.GetGitHubOwner();

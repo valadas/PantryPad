@@ -38,14 +38,14 @@ if (app.Environment.IsDevelopment())
 app.UseDefaultFiles(new DefaultFilesOptions
     {
         FileProvider = new PhysicalFileProvider(
-            Path.Combine(builder.Environment.ContentRootPath, "wwwroot/www")),
+            Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "www")),
         DefaultFileNames = new List<string> { "index.html" },
     });
 
     app.UseStaticFiles(new StaticFileOptions
     {
         FileProvider = new PhysicalFileProvider
-        (Path.Combine(builder.Environment.ContentRootPath, "wwwroot/www")),
+        (Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "www")),
         RequestPath = "",
     });
 app.UseSwagger();
