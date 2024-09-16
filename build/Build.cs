@@ -64,10 +64,20 @@ class Build : NukeBuild
     Target DockerBuild => _ => _
         .Executes(() =>
         {
-            DockerTasks.DockerBuild(s => s
-                .SetPath(RootDirectory)
-                .SetFile(RootDirectory / "Dockerfile")
-                .SetTag($"pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}"));
+            var buildResult = DockerTasks.DockerBuild(s => s
+            .SetPath(RootDirectory)
+            .SetFile(RootDirectory / "Dockerfile")
+            .SetTag($"pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+            .SetProcessLogger((type, output) => {
+                if (output.Contains("ERROR:"))
+                {
+                    Serilog.Log.Error(output);
+                }
+                else
+                {
+                    Serilog.Log.Information(output);
+                }
+            }));
         });
 
     Target CI => _ => _
