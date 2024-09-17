@@ -83,7 +83,7 @@ class Build : NukeBuild
             var buildResult = DockerTasks.DockerBuild(s => s
             .SetPath(RootDirectory)
             .SetFile(RootDirectory / "Dockerfile")
-            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
             .SetProcessLogger((type, output) => {
                 if (output.Contains("ERROR:"))
                 {
@@ -114,7 +114,7 @@ class Build : NukeBuild
             var (owner, name) = (GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
             var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.FullSemVer;
             var releaseNotes = GetReleaseNotes();
-            var newRelease = new NewRelease(GitVersion.FullSemVer)
+            var newRelease = new NewRelease(GitVersion.SemVer)
             {
                 Draft = true,
                 Name = $"v{version}",
