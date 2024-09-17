@@ -107,12 +107,12 @@ class Build : NukeBuild
         .Executes(async () =>
         {
             var credentials = new Credentials(GitHubActions.Token);
-            GitHubTasks.GitHubClient = new GitHubClient(new ProductHeaderValue("Eraware.Dnn.Templates"))
+            GitHubTasks.GitHubClient = new GitHubClient(new ProductHeaderValue("PantryPad"))
             {
                 Credentials = credentials,
             };
             var (owner, name) = (GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
-            var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.FullSemVer;
+            var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.SemVer;
             var releaseNotes = GetReleaseNotes();
             var newRelease = new NewRelease(GitVersion.SemVer)
             {
