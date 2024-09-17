@@ -146,7 +146,7 @@ class Build : NukeBuild
                     }
                 }));
             DockerTasks.DockerPush(s => s
-                .SetName($"ghcr.io/{owner}/pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+                .SetName($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
                 .SetProcessLogger((type, output) =>
                 {
                     if (output.Contains("ERROR:"))
