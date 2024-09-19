@@ -1,0 +1,6 @@
+@PantryPad_HostAddress = http://localhost:5000
+
+GET {{PantryPad_HostAddress}}/api/simple
+Accept: application/json
+
+###

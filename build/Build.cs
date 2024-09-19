@@ -53,16 +53,26 @@ class Build : NukeBuild
     static GitHubActions GitHubActions => GitHubActions.Instance;
 
     // PATHS
-    AbsolutePath SourceDirectory => RootDirectory / "PantryPad";
+    AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath WwwRootDirectory => SourceDirectory / "wwwroot";
+    AbsolutePath BinariesDirectory => SourceDirectory / "bin" / Configuration / "net8.0";
+    AbsolutePath AppDirectory => RootDirectory / "App";
 
     Target Compile => _ => _
         .DependsOn(BuildFrontEnd)
         .Executes(() =>
         {
-            DotNetTasks.DotNetBuild(s => s
-                .SetProjectFile(PantryPadProject)
-                .SetConfiguration(Configuration));
+            DotNetTasks.DotNetPublish(s =>
+                s.SetProject(PantryPadProject)
+                .SetConfiguration(Configuration)
+                .SetOutput(AppDirectory)
+                .SetRuntime("linux-musl-x64")
+                .EnableSelfContained()
+            );
+
+            var wwwrootDestinationDirectory = AppDirectory / "wwwroot";
+            wwwrootDestinationDirectory.CreateOrCleanDirectory();
+            (WwwRootDirectory / "www").Copy(wwwrootDestinationDirectory / "www", ExistsPolicy.MergeAndOverwrite);
         });
     
     Target BuildFrontEnd => _ => _
@@ -77,13 +87,14 @@ class Build : NukeBuild
 
     Target DockerBuild => _ => _
         .DependsOn(BuildFrontEnd)
+        .DependsOn(Compile)
         .Executes(() =>
         {
             var owner = GitRepository.GetGitHubOwner();
             var buildResult = DockerTasks.DockerBuild(s => s
             .SetPath(RootDirectory)
             .SetFile(RootDirectory / "Dockerfile")
-            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
             .SetProcessLogger((type, output) => {
                 if (output.Contains("ERROR:"))
                 {
@@ -107,14 +118,14 @@ class Build : NukeBuild
         .Executes(async () =>
         {
             var credentials = new Credentials(GitHubActions.Token);
-            GitHubTasks.GitHubClient = new GitHubClient(new ProductHeaderValue("Eraware.Dnn.Templates"))
+            GitHubTasks.GitHubClient = new GitHubClient(new ProductHeaderValue("PantryPad"))
             {
                 Credentials = credentials,
             };
             var (owner, name) = (GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
-            var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.FullSemVer;
+            var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.SemVer;
             var releaseNotes = GetReleaseNotes();
-            var newRelease = new NewRelease(GitVersion.FullSemVer)
+            var newRelease = new NewRelease(GitVersion.SemVer)
             {
                 Draft = true,
                 Name = $"v{version}",
@@ -146,7 +157,7 @@ class Build : NukeBuild
                     }
                 }));
             DockerTasks.DockerPush(s => s
-                .SetName($"ghcr.io/{owner}/pantrypad:{GitVersion.MajorMinorPatch}.{GitVersion.CommitsSinceVersionSource}")
+                .SetName($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
                 .SetProcessLogger((type, output) =>
                 {
                     if (output.Contains("ERROR:"))
