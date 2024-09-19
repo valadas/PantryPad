@@ -1,3 +1,5 @@
+// Copyright (c) Daniel Valadas. All rights reserved.
+
 var builder = WebApplication.CreateBuilder(args);
 
 Startup.ConfigureServices(builder.Services);

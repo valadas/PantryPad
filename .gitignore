@@ -5,3 +5,4 @@ src/obj/
 build/bin/
 build/obj/
 App/
+.vs/

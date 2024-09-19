@@ -53,7 +53,7 @@ class Build : NukeBuild
     static GitHubActions GitHubActions => GitHubActions.Instance;
 
     // PATHS
-    AbsolutePath SourceDirectory => RootDirectory / "PantryPad";
+    AbsolutePath SourceDirectory => RootDirectory / "src";
     AbsolutePath WwwRootDirectory => SourceDirectory / "wwwroot";
     AbsolutePath BinariesDirectory => SourceDirectory / "bin" / Configuration / "net8.0";
     AbsolutePath AppDirectory => RootDirectory / "App";

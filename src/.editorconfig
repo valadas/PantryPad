@@ -1,0 +1,6 @@
+# Enforce namespace usage
+dotnet_diagnostic.SA1200.severity = error
+dotnet_diagnostic.CA1050.severity = error
+
+# Enforce namespace and file name conventions
+dotnet_diagnostic.SA1402.severity = error
