@@ -4,6 +4,7 @@ namespace PantryPad
 {
     using Microsoft.Extensions.FileProviders;
     using Microsoft.OpenApi.Models;
+    using PantryPad.Middlewares;
 
     /// <summary>
     /// Initial startup configuration for the application.
@@ -51,6 +52,8 @@ namespace PantryPad
                 app.UseDeveloperExceptionPage();
                 app.UseCors("AllowStencilDevServer");
             }
+
+            app.UseMiddleware<RequestLoggingMiddleware>();
 
             app.UseDefaultFiles(new DefaultFilesOptions
             {
