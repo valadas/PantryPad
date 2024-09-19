@@ -10,7 +10,7 @@ export class MyComponent {
   @State() date: any;
 
   componentWillLoad() {
-    fetch('http://localhost:8099/api/simple')
+    fetch('/api/simple')
     .then(response => response.json())
     .then(data => {
       this.message = data.message;
