@@ -55,14 +55,24 @@ class Build : NukeBuild
     // PATHS
     AbsolutePath SourceDirectory => RootDirectory / "PantryPad";
     AbsolutePath WwwRootDirectory => SourceDirectory / "wwwroot";
+    AbsolutePath BinariesDirectory => SourceDirectory / "bin" / Configuration / "net8.0";
+    AbsolutePath AppDirectory => RootDirectory / "App";
 
     Target Compile => _ => _
         .DependsOn(BuildFrontEnd)
         .Executes(() =>
         {
-            DotNetTasks.DotNetBuild(s => s
-                .SetProjectFile(PantryPadProject)
-                .SetConfiguration(Configuration));
+            DotNetTasks.DotNetPublish(s =>
+                s.SetProject(PantryPadProject)
+                .SetConfiguration(Configuration)
+                .SetOutput(AppDirectory)
+                .SetRuntime("linux-musl-x64")
+                .EnableSelfContained()
+            );
+
+            var wwwrootDestinationDirectory = AppDirectory / "wwwroot";
+            wwwrootDestinationDirectory.CreateOrCleanDirectory();
+            (WwwRootDirectory / "www").Copy(wwwrootDestinationDirectory / "www", ExistsPolicy.MergeAndOverwrite);
         });
     
     Target BuildFrontEnd => _ => _
@@ -77,6 +87,7 @@ class Build : NukeBuild
 
     Target DockerBuild => _ => _
         .DependsOn(BuildFrontEnd)
+        .DependsOn(Compile)
         .Executes(() =>
         {
             var owner = GitRepository.GetGitHubOwner();
