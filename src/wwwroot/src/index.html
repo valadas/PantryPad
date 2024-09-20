@@ -3,23 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
-
-    <script type="module" src="/build/pantrypad.esm.js" data-resources-url=""></script>
-    <script nomodule src="/build/pantrypad.js"  data-resources-url=""></script>
-    <script>
-      // Detect and set the correct resource URL using the ingress path
-      fetch(window.location.href, { method: 'HEAD' })
-        .then(response => {
-          const ingressPath = response.headers.get('X-Ingress-Path');
-          if (ingressPath) {
-            const script = document.querySelector('script[data-resources-url]');
-            if (script) {
-              script.setAttribute('data-resources-url', ingressPath);
-            }
-          }
-        });
-    </script>
+    <title>PantryPad</title>
+    <script type="module" src="/build/pantrypad.esm.js"></script>
+    <script nomodule src="/build/pantrypad.js"></script>
   </head>
   <body>
     <my-component></my-component>
