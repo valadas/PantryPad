@@ -73,6 +73,9 @@ class Build : NukeBuild
             var wwwrootDestinationDirectory = AppDirectory / "wwwroot";
             wwwrootDestinationDirectory.CreateOrCleanDirectory();
             (WwwRootDirectory / "www").Copy(wwwrootDestinationDirectory / "www", ExistsPolicy.MergeAndOverwrite);
+
+            // Replace the index.html with the one from src because it does not have hardcoded paths.
+            (WwwRootDirectory / "src" / "index.html").Copy(wwwrootDestinationDirectory / "index.html", ExistsPolicy.FileOverwrite);
         });
     
     Target BuildFrontEnd => _ => _
