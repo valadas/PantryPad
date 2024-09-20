@@ -54,6 +54,7 @@ namespace PantryPad
             }
 
             app.UseMiddleware<RequestLoggingMiddleware>();
+            app.UseMiddleware<IngressPathMiddleware>();
 
             app.UseDefaultFiles(new DefaultFilesOptions
             {
