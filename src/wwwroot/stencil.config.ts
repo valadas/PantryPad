@@ -1,7 +1,9 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'pantrypad',
+  globalStyle: 'src/global/app.scss',
   outputTargets: [
     {
       type: 'dist',
@@ -23,4 +25,7 @@ export const config: Config = {
   testing: {
     browserHeadless: "new",
   },
+  plugins: [
+    sass(),
+  ],
 };

@@ -10,7 +10,8 @@ export class MyComponent {
   @State() date: any;
 
   componentWillLoad() {
-    fetch('/api/simple')
+    const basePath = window.location.pathname.replace(/\/$/, ""); // Remove trailing slash, if any.
+    fetch(`${basePath}/api/simple`)
     .then(response => response.json())
     .then(data => {
       this.message = data.message;
