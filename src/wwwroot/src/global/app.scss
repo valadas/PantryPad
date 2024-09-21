@@ -1,0 +1,17 @@
+:root {
+    --color-background: #f8f9fa; /* Default for light mode */
+    --color-foreground: #343a40; /* Default for light mode */
+}
+
+/* For users who prefer dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #343a40;
+        --color-foreground: #f8f9fa;
+    }
+}
+
+html{
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+}

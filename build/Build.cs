@@ -75,7 +75,7 @@ class Build : NukeBuild
             (WwwRootDirectory / "www").Copy(wwwrootDestinationDirectory / "www", ExistsPolicy.MergeAndOverwrite);
 
             // Replace the index.html with the one from src because it does not have hardcoded paths.
-            (WwwRootDirectory / "src" / "index.html").Copy(wwwrootDestinationDirectory / "index.html", ExistsPolicy.FileOverwrite);
+            (WwwRootDirectory / "src" / "index.html").Copy(wwwrootDestinationDirectory / "www" / "index.html", ExistsPolicy.FileOverwrite);
         });
     
     Target BuildFrontEnd => _ => _
@@ -93,11 +93,12 @@ class Build : NukeBuild
         .DependsOn(Compile)
         .Executes(() =>
         {
+            var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.SemVer;
             var owner = GitRepository.GetGitHubOwner();
             var buildResult = DockerTasks.DockerBuild(s => s
             .SetPath(RootDirectory)
             .SetFile(RootDirectory / "Dockerfile")
-            .SetTag($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
+            .SetTag($"ghcr.io/{owner}/pantrypad:{version}")
             .SetProcessLogger((type, output) => {
                 if (output.Contains("ERROR:"))
                 {
@@ -128,7 +129,7 @@ class Build : NukeBuild
             var (owner, name) = (GitRepository.GetGitHubOwner(), GitRepository.GetGitHubName());
             var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.SemVer;
             var releaseNotes = GetReleaseNotes();
-            var newRelease = new NewRelease(GitVersion.SemVer)
+            var newRelease = new NewRelease(version)
             {
                 Draft = true,
                 Name = $"v{version}",
@@ -160,7 +161,7 @@ class Build : NukeBuild
                     }
                 }));
             DockerTasks.DockerPush(s => s
-                .SetName($"ghcr.io/{owner}/pantrypad:{GitVersion.SemVer}")
+                .SetName($"ghcr.io/{owner}/pantrypad:{version}")
                 .SetProcessLogger((type, output) =>
                 {
                     if (output.Contains("ERROR:"))
