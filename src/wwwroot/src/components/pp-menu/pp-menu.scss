@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+a {
+  color: var(--dnn-color-foreground);
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  text-decoration: none;
+  font-size: 1.5em;
+  padding: 0.5em;
+  transition: background-color 0.3s;
+  svg{
+    width: 1em;
+    height: 1em;
+    display: block;
+    fill: var(--dnn-color-foreground);
+  }
+  &.active{
+    border-right: 2px solid var(--dnn-color-primary-dark);
+    background-color: var(--dnn-color-background-dark);
+  }
+  &:hover, &:active{
+    background-color: var(--dnn-color-background-dark);
+  }
+}
