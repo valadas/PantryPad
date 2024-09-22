@@ -19,7 +19,7 @@ namespace PantryPad.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return this.Ok(new { message = "Hello from API", date = DateTime.UtcNow });
+            return this.Ok(new { message = "Hello from API 2", date = DateTime.UtcNow });
         }
     }
 }

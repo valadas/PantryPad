@@ -41,7 +41,9 @@
   "devDependencies": {
     "@stencil/core": "^4.21.0",
     "@stencil/sass": "^3.0.12",
-    "@types/node": "^22.5.5"
+    "@types/node": "^22.5.5",
+    "modern-normalize": "^3.0.1",
+    "stencil-router-v2": "^0.6.0"
   },
   "license": "MIT"
 }
