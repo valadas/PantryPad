@@ -8,20 +8,4 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 
-import { createRouter } from "stencil-router-v2";
-
 export type * from './components.d.ts';
-
-export const Router = createRouter({
-    parseURL: url => {
-        let result = `${url.hash.slice(1)}`
-        if (result === "") {
-            result = "/";
-        }
-        return result;
-    },
-    serializeURL: path => {
-        const result = new URL(`#/${path}`)
-        return result;
-    },
-})
