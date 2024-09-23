@@ -1,6 +1,5 @@
-import { Component, Host, h, Element } from '@stencil/core';
-import { href } from 'stencil-router-v2';
-import { Router } from '../..';
+import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { href, Router } from 'stencil-router-v2';
 import { Icon } from '../../icons/icons';
 
 @Component({
@@ -12,24 +11,26 @@ export class PpMenu {
 
   @Element() el: HTMLElement;
 
+  @Prop() Router!: Router;
+
   render() {
     return (
       <Host>
         <a
-          {...href("#/stores")}
-          class={{active: Router.activePath === "/stores"}}
+          {...href("/stores")}
+          class={{active: this.Router.activePath === "/stores"}}
         >
           {Icon.store} Stores
         </a>
         <a
-          {...href("#/locations")}
-          class={{active: Router.activePath === "/locations"}}
+          {...href("/locations")}
+          class={{active: this.Router.activePath === "/locations"}}
         >
-          {Icon.door} Locations
+          {Icon.door} Locationss
         </a>
         <a
-          {...href("#/units")}
-          class={{active: Router.activePath === "/units"}}
+          {...href("/units")}
+          class={{active: this.Router.activePath === "/units"}}
         >
           {Icon.measuringCup} Units
         </a>

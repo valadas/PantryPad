@@ -2,6 +2,7 @@
 
 namespace PantryPad
 {
+    using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
     using Microsoft.Extensions.FileProviders;
     using Microsoft.OpenApi.Models;
     using PantryPad.Middlewares;
@@ -78,9 +79,17 @@ namespace PantryPad
 
             app.UseRouting();
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "wwwroot/www";
+                spa.UseProxyToSpaDevelopmentServer("http://localhost:3333");
+                spa.UseReactDevelopmentServer(npmScript: "start");
             });
         }
     }
