@@ -67,17 +67,17 @@ namespace PantryPad
 
             if (!env.IsDevelopment())
             {
-                app.UseStaticFiles(new StaticFileOptions
-                {
-                    FileProvider = new PhysicalFileProvider(
-                    Path.Combine(env.ContentRootPath, "wwwroot", "www")),
-                    RequestPath = string.Empty,
-                });
                 app.UseDefaultFiles(new DefaultFilesOptions
                 {
                     FileProvider = new PhysicalFileProvider(
                         Path.Combine(env.ContentRootPath, "wwwroot", "www")),
                     DefaultFileNames = new List<string> { "index.html" },
+                });
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(
+                    Path.Combine(env.ContentRootPath, "wwwroot", "www")),
+                    RequestPath = string.Empty,
                 });
             }
 
@@ -94,6 +94,20 @@ namespace PantryPad
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "PantryPad API v1");
                 c.RoutePrefix = "swagger";
             });
+
+            if (!env.IsDevelopment())
+            {
+                app.UseSpa(spa =>
+                {
+                    spa.Options.SourcePath = "wwwroot/www";
+                    spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
+                    {
+                        FileProvider = new PhysicalFileProvider(
+                            Path.Combine(env.ContentRootPath, "wwwroot", "www")),
+                        RequestPath = string.Empty,
+                    };
+                });
+            }
         }
     }
 }
