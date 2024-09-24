@@ -25,6 +25,9 @@ export const config: Config = {
   testing: {
     browserHeadless: "new",
   },
+  devServer: {
+    gzip: false,
+  },
   plugins: [
     sass(),
   ],
