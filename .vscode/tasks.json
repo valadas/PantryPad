@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Develop",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+				"--project",
+				"${workspaceFolder}/src/PantryPad.csproj"
+            ],
+            "problemMatcher": "$tsc",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Build Docker Image",
+            "type": "shell",
+            "command": "build.ps1",
+            "args": [
+                "--Target",
+                "DockerBuild"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "options": {
+                "shell": {
+                    "executable": "pwsh",  // Use PowerShell Core
+                    "args": []
+                }
+            }
+        }
+    ]
+}

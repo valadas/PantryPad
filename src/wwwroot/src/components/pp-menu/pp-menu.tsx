@@ -26,7 +26,7 @@ export class PpMenu {
           {...href("/locations")}
           class={{active: this.Router.activePath === "/locations"}}
         >
-          {Icon.door} Locationss
+          {Icon.door} Locations
         </a>
         <a
           {...href("/units")}
