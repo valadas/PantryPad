@@ -5,33 +5,50 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Router } from "stencil-router-v2";
+export { Router } from "stencil-router-v2";
 export namespace Components {
-    interface MyComponent {
+    interface AppRoot {
+    }
+    interface PpMenu {
+        "Router": Router;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAppRootElement: {
+        prototype: HTMLAppRootElement;
+        new (): HTMLAppRootElement;
+    };
+    interface HTMLPpMenuElement extends Components.PpMenu, HTMLStencilElement {
+    }
+    var HTMLPpMenuElement: {
+        prototype: HTMLPpMenuElement;
+        new (): HTMLPpMenuElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "app-root": HTMLAppRootElement;
+        "pp-menu": HTMLPpMenuElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface AppRoot {
+    }
+    interface PpMenu {
+        "Router": Router;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "app-root": AppRoot;
+        "pp-menu": PpMenu;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "pp-menu": LocalJSX.PpMenu & JSXBase.HTMLAttributes<HTMLPpMenuElement>;
         }
     }
 }

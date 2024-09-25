@@ -13,6 +13,18 @@ namespace PantryPad
         /// <param name="args">The command line arguments.</param>
         internal static void Main(string[] args)
         {
+            try
+            {
+                SetupApp(args).Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unhandled exceptions: {ex}");
+            }
+        }
+
+        private static WebApplication SetupApp(string[] args)
+        {
             var builder = WebApplication.CreateBuilder(args);
 
             Startup.ConfigureServices(builder.Services);
@@ -21,7 +33,7 @@ namespace PantryPad
 
             Startup.Configure(app, app.Environment);
 
-            app.Run();
+            return app;
         }
     }
 }
