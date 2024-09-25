@@ -1,0 +1,111 @@
+$light-theme: (
+    --dnn-color-primary: #3792ED,
+    --dnn-color-primary-light: #6CB6F3,
+    --dnn-color-primary-dark: #0D569E,
+    --dnn-color-primary-contrast: #222,
+
+    --dnn-color-secondary:#567799,
+    --dnn-color-secondary-light: #668EB6,
+    --dnn-color-secondary-dark: #45607B,
+    --dnn-color-secondary-contrast: #ddd,
+    
+    --dnn-color-tertiary: #6B6E50,
+    --dnn-color-tertiary-light: #878C66,
+    --dnn-color-tertiary-dark: #4E513B,
+    --dnn-color-tertiary-contrast: #ccc,
+    
+    --dnn-color-background: #DDD,
+    --dnn-color-background-light: #FFF,
+    --dnn-color-background-dark: #BBB,
+    --dnn-color-background-contrast: #222,
+    --dnn-color-background-border: #aaa,
+    
+    --dnn-color-foreground: #222,
+    --dnn-color-foreground-light: #444,
+    --dnn-color-foreground-dark: #000,
+    --dnn-color-foreground-contrast: #EEE,
+    
+    --dnn-color-surface: #b2b2b2,
+    --dnn-color-surface-light: #e5e5e5,
+    --dnn-color-surface-dark: #999999,
+    --dnn-color-surface-contrast: #000000,
+    
+    --dnn-color-info: #17a2b8,
+    --dnn-color-info-light: #23b8cf,
+    --dnn-color-info-dark: #00889e,
+    --dnn-color-info-contrast: #FFFFFF,
+    
+    --dnn-color-success: #28a745,
+    --dnn-color-success-light: #49c25d,
+    --dnn-color-success-dark: #00902f,
+    --dnn-color-success-contrast: #FFFFFF,
+
+    --dnn-color-warning: #ffc107,
+    --dnn-color-warning-light: #ffd42e,
+    --dnn-color-warning-dark: #e9ad00,
+    --dnn-color-warning-contrast: #FFFFFF,
+
+    --dnn-color-danger: #dc3545,
+    --dnn-color-danger-light: #f14954,
+    --dnn-color-danger-dark: #c51535,
+    --dnn-color-danger-contrast: #FFFFFF,
+
+    --dnn-controls-radius: 5px,
+    --dnn-controls-padding: 5px,
+);
+
+$dark-theme: (
+    --dnn-color-primary: #3792ED,
+    --dnn-color-primary-light: #6CB6F3,
+    --dnn-color-primary-dark: #0D569E,
+    --dnn-color-primary-contrast: #222,
+
+    --dnn-color-secondary:#567799,
+    --dnn-color-secondary-light: #668EB6,
+    --dnn-color-secondary-dark: #45607B,
+    --dnn-color-secondary-contrast: #ddd,
+    
+    --dnn-color-tertiary: #6B6E50,
+    --dnn-color-tertiary-light: #878C66,
+    --dnn-color-tertiary-dark: #4E513B,
+    --dnn-color-tertiary-contrast: #ccc,
+    
+    --dnn-color-background: #222,
+    --dnn-color-background-light: #444,
+    --dnn-color-background-dark: #000,
+    --dnn-color-background-contrast: #ddd,
+    --dnn-color-background-border: #555,
+    
+    --dnn-color-foreground: #ddd,
+    --dnn-color-foreground-light: #fff,
+    --dnn-color-foreground-dark: #bbb,
+    --dnn-color-foreground-contrast: #222,
+    
+    --dnn-color-surface: #444,
+    --dnn-color-surface-light: #666,
+    --dnn-color-surface-dark: #222,
+    --dnn-color-surface-contrast: #ddd,
+    
+    --dnn-color-info: #17a2b8,
+    --dnn-color-info-light: #23b8cf,
+    --dnn-color-info-dark: #00889e,
+    --dnn-color-info-contrast: #FFFFFF,
+    
+    --dnn-color-success: #28a745,
+    --dnn-color-success-light: #49c25d,
+    --dnn-color-success-dark: #00902f,
+    --dnn-color-success-contrast: #FFFFFF,
+
+    --dnn-color-warning: #ffc107,
+    --dnn-color-warning-light: #ffd42e,
+    --dnn-color-warning-dark: #e9ad00,
+    --dnn-color-warning-contrast: #FFFFFF,
+
+    --dnn-color-danger: #dc3545,
+    --dnn-color-danger-light: #f14954,
+    --dnn-color-danger-dark: #c51535,
+    --dnn-color-danger-contrast: #FFFFFF,
+
+    --dnn-controls-radius: 5px,
+    --dnn-controls-padding: 5px,
+);

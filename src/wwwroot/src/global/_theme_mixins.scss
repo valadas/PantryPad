@@ -1,0 +1,33 @@
+// _theme_mixins.scss
+@mixin apply-theme($light-theme, $dark-theme) {
+    :root {
+      @include inject-theme($light-theme);
+    }
+  
+    @media (prefers-color-scheme: light) {
+      :root {
+        @include inject-theme($light-theme);
+      }
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      :root {
+        @include inject-theme($dark-theme);
+      }
+    }
+  
+    html.dnn-color-scheme-light {
+      @include inject-theme($light-theme);
+    }
+  
+    html.dnn-color-scheme-dark {
+      @include inject-theme($dark-theme);
+    }
+  }
+  
+  @mixin inject-theme($theme-map) {
+    @each $key, $value in $theme-map {
+      #{$key}: #{$value};
+    }
+  }
+  

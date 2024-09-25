@@ -10,6 +10,10 @@ export { Router } from "stencil-router-v2";
 export namespace Components {
     interface AppRoot {
     }
+    interface PpColorModeToggler {
+    }
+    interface PpFooter {
+    }
     interface PpMenu {
         "Router": Router;
     }
@@ -21,6 +25,18 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLPpColorModeTogglerElement extends Components.PpColorModeToggler, HTMLStencilElement {
+    }
+    var HTMLPpColorModeTogglerElement: {
+        prototype: HTMLPpColorModeTogglerElement;
+        new (): HTMLPpColorModeTogglerElement;
+    };
+    interface HTMLPpFooterElement extends Components.PpFooter, HTMLStencilElement {
+    }
+    var HTMLPpFooterElement: {
+        prototype: HTMLPpFooterElement;
+        new (): HTMLPpFooterElement;
+    };
     interface HTMLPpMenuElement extends Components.PpMenu, HTMLStencilElement {
     }
     var HTMLPpMenuElement: {
@@ -29,17 +45,25 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
+        "pp-color-mode-toggler": HTMLPpColorModeTogglerElement;
+        "pp-footer": HTMLPpFooterElement;
         "pp-menu": HTMLPpMenuElement;
     }
 }
 declare namespace LocalJSX {
     interface AppRoot {
     }
+    interface PpColorModeToggler {
+    }
+    interface PpFooter {
+    }
     interface PpMenu {
         "Router": Router;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
+        "pp-color-mode-toggler": PpColorModeToggler;
+        "pp-footer": PpFooter;
         "pp-menu": PpMenu;
     }
 }
@@ -48,6 +72,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "pp-color-mode-toggler": LocalJSX.PpColorModeToggler & JSXBase.HTMLAttributes<HTMLPpColorModeTogglerElement>;
+            "pp-footer": LocalJSX.PpFooter & JSXBase.HTMLAttributes<HTMLPpFooterElement>;
             "pp-menu": LocalJSX.PpMenu & JSXBase.HTMLAttributes<HTMLPpMenuElement>;
         }
     }
