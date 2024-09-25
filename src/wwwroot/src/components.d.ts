@@ -5,10 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Router } from "stencil-router-v2";
+export { Router } from "stencil-router-v2";
 export namespace Components {
     interface AppRoot {
     }
     interface PpMenu {
+        "Router": Router;
     }
 }
 declare global {
@@ -33,6 +36,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface PpMenu {
+        "Router": Router;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property              | Attribute | Description | Type     | Default     |
+| --------------------- | --------- | ----------- | -------- | ----------- |
+| `Router` _(required)_ | --        |             | `Router` | `undefined` |
+
+
 ## Dependencies
 
 ### Used by

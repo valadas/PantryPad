@@ -1,6 +1,7 @@
 import { Component, Host, h } from '@stencil/core';
-import { Route, match } from "stencil-router-v2";
-import { Router } from "../../";
+import { Route, createRouter, match } from "stencil-router-v2";
+
+const Router = createRouter();
 
 @Component({
   tag: 'app-root',
@@ -20,11 +21,11 @@ export class AppRoot {
         </header>
         <section class="mid">
           <aside>
-            <pp-menu></pp-menu>
+            <pp-menu Router={Router}></pp-menu>
           </aside>
           <main>
             <Router.Switch>
-              <Route path="/" to="#/units" />
+              <Route path="/" to="/units" />
               <Route path="/stores" render={() => <div>Stores</div>} />
               <Route path="/locations" render={() => <div>Locations</div>} />
               <Route path="/units" render={() => <div>Units</div>} />
