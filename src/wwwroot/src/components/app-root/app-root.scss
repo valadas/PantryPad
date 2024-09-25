@@ -6,7 +6,7 @@
 
 header{
   background-color: var(--dnn-color-background);
-  border-bottom: 1px solid var(--dnn-color-background-light);
+  border-bottom: 1px solid var(--dnn-color-background-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,13 +22,11 @@ section.mid{
   flex: 1;
   aside{
       background-color: var(--dnn-color-background);
-      border-right: 1px solid var(--dnn-color-background-light);
+      border-right: 1px solid var(--dnn-color-background-border);
   }
 }
 footer{
   background-color: var(--dnn-color-background);
-  border-top: 1px solid var(--dnn-color-background-light);
+  border-top: 1px solid var(--dnn-color-background-border);
   padding: 0.5em;
-  display: flex;
-  flex-direction: row-reverse;
 }

@@ -39,7 +39,7 @@ export class AppRoot {
           </main>
         </section>
         <footer>
-          Copyright Daniel Valadas
+          <pp-footer />
         </footer>
       </Host>
     );
