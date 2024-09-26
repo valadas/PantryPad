@@ -17,8 +17,9 @@ a {
     display: block;
     fill: var(--dnn-color-foreground);
   }
+  border-right: 3px solid transparent;
   &.active{
-    border-right: 2px solid var(--dnn-color-primary-dark);
+    border-right: 3px solid var(--dnn-color-primary-dark);
     background-color: var(--dnn-color-background-dark);
   }
   &:hover, &:active{
