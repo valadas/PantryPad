@@ -39,6 +39,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
+    "@dnncommunity/dnn-elements": "^0.24.0-beta.1",
     "@stencil/core": "^4.21.0",
     "@stencil/sass": "^3.0.12",
     "@types/node": "^22.5.5",

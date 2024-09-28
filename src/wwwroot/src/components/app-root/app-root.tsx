@@ -14,7 +14,7 @@ export class AppRoot {
       <Host>
         <header>
           <h1>PantryPad</h1>
-          [global-search]
+          <dnn-searchbox />
           {/* This is a hack to make sure other svgs in shadow-root render. */}
           <svg width={0} height={0}></svg>
           <nav>[user] [settings] [mobile-menu]</nav>
@@ -26,7 +26,13 @@ export class AppRoot {
           <main>
             <Router.Switch>
               <Route path="/" to="/units" />
-              <Route path="/stores" render={() => <div>Stores</div>} />
+              <Route path="/stores" render={() => <div>
+                <div class="some-surface">
+                  <p>
+                    Hello world!
+                  </p>
+                </div>
+              </div>} />
               <Route path="/locations" render={() => <div>Locations</div>} />
               <Route path="/units" render={() => <div>Units</div>} />
               <Route
