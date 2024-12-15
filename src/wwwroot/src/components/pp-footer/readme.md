@@ -1,4 +1,4 @@
-# app-root
+# pp-footer
 
 
 
@@ -7,20 +7,20 @@
 
 ## Dependencies
 
+### Used by
+
+ - [app-root](../app-root)
+
 ### Depends on
 
-- dnn-searchbox
-- [pp-menu](../pp-menu)
-- [pp-footer](../pp-footer)
+- [pp-color-mode-toggler](../pp-color-mode-toggler)
 
 ### Graph
 ```mermaid
 graph TD;
-  app-root --> dnn-searchbox
-  app-root --> pp-menu
-  app-root --> pp-footer
   pp-footer --> pp-color-mode-toggler
-  style app-root fill:#f9f,stroke:#333,stroke-width:4px
+  app-root --> pp-footer
+  style pp-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

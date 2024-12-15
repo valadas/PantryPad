@@ -96,19 +96,9 @@ class Build : NukeBuild
             var version = GitRepository.IsOnMainOrMasterBranch() ? GitVersion.MajorMinorPatch : GitVersion.SemVer;
             var owner = GitRepository.GetGitHubOwner();
             var buildResult = DockerTasks.DockerBuild(s => s
-            .SetPath(RootDirectory)
-            .SetFile(RootDirectory / "Dockerfile")
-            .SetTag($"ghcr.io/{owner}/pantrypad:{version}")
-            .SetProcessLogger((type, output) => {
-                if (output.Contains("ERROR:"))
-                {
-                    Serilog.Log.Error(output);
-                }
-                else
-                {
-                    Serilog.Log.Information(output);
-                }
-            }));
+                .SetPath(RootDirectory)
+                .SetFile(RootDirectory / "Dockerfile")
+                .SetTag($"ghcr.io/{owner}/pantrypad:{version}"));
         });
 
     Target CI => _ => _
@@ -148,31 +138,10 @@ class Build : NukeBuild
             DockerTasks.DockerLogin(s => s
                 .SetServer("ghcr.io")
                 .SetUsername(GitHubActions.Token)
-                .SetPassword(GitHubActions.Token)
-                .SetProcessLogger((type, output) =>
-                {
-                    if (output.Contains("ERROR:"))
-                    {
-                        Serilog.Log.Error(output);
-                    }
-                    else
-                    {
-                        Serilog.Log.Information(output);
-                    }
-                }));
+                .SetPassword(GitHubActions.Token));
+
             DockerTasks.DockerPush(s => s
-                .SetName($"ghcr.io/{owner}/pantrypad:{version}")
-                .SetProcessLogger((type, output) =>
-                {
-                    if (output.Contains("ERROR:"))
-                    {
-                        Serilog.Log.Error(output);
-                    }
-                    else
-                    {
-                        Serilog.Log.Information(output);
-                    }
-                }));
+                .SetName($"ghcr.io/{owner}/pantrypad:{version}"));
         });
 
     private string GetReleaseNotes()
